@@ -20,7 +20,7 @@ A simple approach to making a template is this:
 function addContact(name, phone) {
   const elem = $('.template.contact').clone().removeClass('template');
   $('.name', elem).text(name);
-  $('.phone', phone).text(email);
+  $('.phone', elem).text(phone);
   elem.appendTo($('.contacts'));
 }
 ```
@@ -57,7 +57,6 @@ doesn't match the SHA in the contact. Here's an example:
 <div class="contact">
   <div class="name">Jamie Douglas</div>
   <div class="phone">(321) 522-1937</div>
-  <div class="email">inside.joke.from.the.devs@example.com</div>
 </div>
 ```
 
@@ -69,7 +68,7 @@ doesn't match the SHA in the contact. Here's an example:
       "param": "name"
     },
     {
-      "selector": ".name",
+      "selector": ".phone",
       "param": "phone"
     }
   ],
@@ -95,3 +94,4 @@ clear what's being replaced, by highlighting it. There would also be a
 command-line tool for inspecting it that would print it out on a color
 console, so the developers can be careful to make sure all example data
 is replaced and won't inadvertantly show up.
+
