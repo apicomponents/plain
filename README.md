@@ -78,9 +78,15 @@ doesn't match the SHA in the contact. Here's an example:
 ```
 
 ``` javascript
-import Template from 'apicomponents/plain'
-import contactTemplate from './templates/contact.html'
-const template = new Template(contactTemplate, './templates/contact.json')
+import Template from '@apicomponents/plain'
+import contactTemplate from './templates/contact.html' // or fs.readFileSync()
+import contactTemplateData from './templates/contact.json'
+
+// this will throw an error if the checksum doesn't match! that way if an
+// extra field gets added to the HTML but not the JSON specification, it
+// won't get rendered and the error will hopefully be caught by CI before
+// it hits production
+const template = new Template(contactTemplate, contactTemplateData)
 template.render({name: 'Bob', phone: '214-515-6932'})
 ```
 
